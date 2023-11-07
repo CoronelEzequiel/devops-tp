@@ -14,4 +14,4 @@ FROM alpine:3.18 as production
 COPY --from=builder /devops-app /devops-app
 
 # Establezca el comando de entrada para la imagen de producción
-CMD ["python3", "src/routes.py"]
+CMD ["python", "src/routes.py"]
