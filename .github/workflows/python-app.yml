@@ -34,7 +34,7 @@ jobs:
         #flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test unit tests
       run: |
-        python -m unittest ./test_app 
+        python -m unittest ./src/test_app 
 
   push_to_docker_hub_registry:
     name: Push Docker image to docker hub
