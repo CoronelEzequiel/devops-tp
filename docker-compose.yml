@@ -10,4 +10,4 @@ services:
     working_dir: /devops-app
     command: python3 src/routes.py
     ports: 
-      - 7000:3000
+      - 3000:3000
