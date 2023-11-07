@@ -25,6 +25,9 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
+        apt-get update
+        apt-get install -y --no-install-recommends python3-dev
+        python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Test unit tests
       run: python -m unittest discover -s src -p 'test_app.py'
