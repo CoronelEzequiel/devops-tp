@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: dockeruser46
+          images: ${{ secrets.DOCKER_USER }}
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -56,6 +56,6 @@ jobs:
           context: .
           file: ./Dockerfile.prod
           push: true
-          tags: dockeruser46:${{ github.sha }}
+          tags: ${{ secrets.DOCKER_USER }}:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
 
