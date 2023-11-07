@@ -48,7 +48,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: dockeruser46 #${{ github.repository }}
+          images: dockeruser46
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
