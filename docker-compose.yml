@@ -4,7 +4,7 @@ services:
   devops-app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     volumes:
       - .:/devops-app
     working_dir: /devops-app
