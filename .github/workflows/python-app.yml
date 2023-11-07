@@ -50,8 +50,11 @@ jobs:
         with:
           images: ${{ secrets.DOCKER_USER }}
       
-      - name: Build and tag Docker image
+      - name: Build Docker image
         run: docker compose up -d
+
+      - name: Tag Docker image  
+        run: docker tag devops-tp-devops-app:${{ github.sha }} ${{ secrets.DOCKER_USER }}/devops-tp-devops-app:${{ github.sha }}
 
       - name: Push Docker image to Docker Hub
         run: docker push ${{ secrets.DOCKER_USER }}/devops-tp-devops-app:${{ github.sha }}
