@@ -56,12 +56,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile.prod
+          file: ./docker-compose.yml
+          command: up -d
           push: true
           tags: ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
-
-      - name: Run Docker container
-        run: docker compose up -d
-
-
