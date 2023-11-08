@@ -52,12 +52,28 @@ jobs:
         with:
           images: dockeruser46/devops-tp
 
-      - name: Build and push Docker image
+      - name: Build
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./docker-compose.yml
-          command: up -d
-          push: true
+          file: ./Dockerfile.prod
+          push: false
+
+      - name: Push
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          file: ./Dockerfile.prod
           tags: ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: push_to_docker_hub_registry
+    steps:
+      - name: Deploy
+        uses: docker/compose@v1
+        with:
+          file: docker-compose.yml
+          command: up -d
+
