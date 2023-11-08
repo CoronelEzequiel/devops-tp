@@ -62,6 +62,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Run container
-        uses: docker/cli@v2
+        uses: docker/cli@v3
         with:
           args: run ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }} -p 3000:3000
