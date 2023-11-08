@@ -60,3 +60,9 @@ jobs:
           push: true
           tags: ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: Run container
+        uses: docker/run@v2
+        with:
+          image: ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }}
+          ports: "3000:3000"
