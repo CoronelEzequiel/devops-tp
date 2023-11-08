@@ -66,4 +66,4 @@ jobs:
         with:
           image: ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }}
           ports:
-            - "3000:3000"
+            "3000:3000"
