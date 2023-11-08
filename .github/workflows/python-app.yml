@@ -62,8 +62,8 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Run container
-        uses: docker/run@v3
+        uses: CoronelEzequiel/run-docker@v1
         with:
           image: ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }}
           ports:
-              "3000:3000"
+            - "3000:3000"
