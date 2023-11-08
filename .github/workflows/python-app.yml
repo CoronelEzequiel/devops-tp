@@ -62,7 +62,6 @@ jobs:
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: Run container
-        uses: docker/compose@v2
+        uses: docker/cli@v2
         with:
-          file: docker-compose.yml
-          command: up -d
+          args: run ${{ secrets.DOCKER_USER }}/devops-tp:${{ github.sha }} -p 3000:3000
